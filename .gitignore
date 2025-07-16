@@ -1,0 +1,23 @@
+# Node
+node_modules/
+dist/
+.env
+.env.*.local
+
+# Prisma
+prisma/dev.db
+prisma/.env
+*.sqlite
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+*.local
+docker-compose.override.yml
