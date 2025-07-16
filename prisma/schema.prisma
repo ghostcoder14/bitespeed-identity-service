@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model contact {
+  id             Int       @id @default(autoincrement())
+  phoneNumber    String?
+  email          String?
+  linkedId       Int?
+  linkPrecedence String
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime
+  deletedAt      DateTime?
+  contact        contact?  @relation("contactTocontact", fields: [linkedId], references: [id], map: "Contact_linkedId_fkey")
+  other_contact  contact[] @relation("contactTocontact")
+
+  @@index([linkedId], map: "Contact_linkedId_fkey")
+}
